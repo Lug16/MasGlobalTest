@@ -23,13 +23,16 @@ namespace MasGlobalTest.Services.EmployeeService
             this.employeeDtoFactory = employeeDtoFactory;
         }
 
-        public async Task<IEnumerable<EmployeeDto>> GetEmployeesAsync()
+        public async Task<IEnumerable<EmployeeDto>> GetEmployeesAsync(int id)
         {
             var response = await apiService.Invoke<IEnumerable<Employee>>(HttpMethod.Get, configHandler.GetConfigValue<string>("MasGlobalTestApiEmployeesUrl"));
 
-            var result = response.Select(r => employeeDtoFactory.CreateEmployee(r));
+            var list = response.Select(r => employeeDtoFactory.CreateEmployee(r));
 
-            return result;
+            if (id > 0)
+                return list.Where(r => r.Id == id);
+
+            return list;
         }
     }
 }

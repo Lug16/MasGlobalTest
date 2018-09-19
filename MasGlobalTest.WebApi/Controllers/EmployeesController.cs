@@ -14,9 +14,9 @@ namespace MasGlobalTest.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> Get()
+        public async Task<IHttpActionResult> Get([FromUri] int id = 0)
         {
-            var result = await employeeService.GetEmployeesAsync();
+            var result = await employeeService.GetEmployeesAsync(id);
             return Ok(result);
         }
     }

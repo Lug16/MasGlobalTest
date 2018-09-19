@@ -6,6 +6,6 @@ namespace MasGlobalTest.Services.EmployeeService
 {
     public interface IEmployeeService
     {
-        Task<IEnumerable<EmployeeDto>> GetEmployeesAsync();
+        Task<IEnumerable<EmployeeDto>> GetEmployeesAsync(int id);
     }
 }
