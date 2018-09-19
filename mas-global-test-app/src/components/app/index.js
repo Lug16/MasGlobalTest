@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Input from './components/input';
+import Table from './components/table';
 
 import { getEmployees } from '../../actions';
 
@@ -13,7 +14,8 @@ class App extends Component {
     this.searchOnClick = this.searchOnClick.bind(this);
 
     this.state = {
-      searchInputValue: ''
+      searchInputValue: '',
+      queryResult: []
     }
   }
 
@@ -27,10 +29,27 @@ class App extends Component {
     const { searchInputValue } = this.state;
 
     getEmployees(searchInputValue).then(data => {
-      console.info(data);
+      this.setState({ queryResult: data });
     })
 
     e.preventDefault();
+  }
+
+  renderTable() {
+    const { queryResult } = this.state;
+    if (queryResult.length > 0) {
+      return <Table
+        data={queryResult}
+        header={{
+          Name:'Name',
+          RoleName:'Role',
+          ContractTypeName: 'Contract Type',
+          HourlySalary:'Hourly Salary',
+          MonthlySalary: 'Monthly Salary',
+          AnnualSalary: 'Annual Salary'
+        }}
+      />
+    }
   }
 
   render() {
@@ -52,6 +71,8 @@ class App extends Component {
             Search
           </button>
         </p>
+
+        {this.renderTable()}
       </div>
     );
   }
