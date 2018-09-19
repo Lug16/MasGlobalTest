@@ -13,8 +13,8 @@ namespace MasGlobalTest.Data.Model
         public string ContractTypeName { get; set; }
         public int RoleId { get; set; }
         public string RoleName { get; set; }
-        public object RoleDescription { get; set; }
-        public int HourlySalary { get; set; }
-        public int MonthlySalary { get; set; }
+        public string RoleDescription { get; set; }
+        public decimal HourlySalary { get; set; }
+        public decimal MonthlySalary { get; set; }
     }
 }
