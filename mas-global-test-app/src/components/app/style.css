@@ -4,4 +4,5 @@
 
 .App-intro {
   font-size: large;
+  display: flex;
 }

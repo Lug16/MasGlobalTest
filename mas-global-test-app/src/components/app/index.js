@@ -38,6 +38,7 @@ class App extends Component {
 
   renderTable() {
     const { queryResult } = this.state;
+
     if (queryResult.length > 0) {
       return <Table
         data={queryResult}
@@ -55,11 +56,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         <Header/>
-        <p className="App-intro input-group">
+
+        <p className="App-intro form">
           <Input
-            className="App-intro__input"
+            className="form-control col-md-4 App-intro__input"
             onChange={this.searchInputOnChange}
             placeholder='Search by Employee Id'
             type='number'
