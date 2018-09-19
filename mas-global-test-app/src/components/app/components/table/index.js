@@ -33,7 +33,7 @@ const Table = props => {
     }
 
     return (
-        <table>
+        <table className="table table-hover">
             {renderHeader()}
             {renderBody()}
         </table>
